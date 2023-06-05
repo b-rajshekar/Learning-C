@@ -37,3 +37,15 @@ int myAge = 25;
 int votingAge = 18;
 
 printf("%d", myAge >= votingAge); // Returns 1 (true), meaning 25 year olds are allowed to vote!
+
+// Example 3
+int myAge = 25;
+int votingAge = 18;
+
+if(myAge >=votingAge) {
+    printf("Old enough to vote");
+    } else {
+    print("Not enough age to vote");
+}
+return 0;
+}
