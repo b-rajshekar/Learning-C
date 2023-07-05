@@ -1,15 +1,25 @@
 #include <stdio.h>
 int main() {
-    int hin, tel, eng, mat, sci, soc, aggr;
+    int commerce, economics, civics, sanskrit, english, aggr;
     float per;
-    printf("Please enter your subject marks by giving space: ");
 
-    scanf("%d%d%d%d%d%d", &hin, &tel, &eng, &mat, &sci, &soc);
-    aggr = hin + tel + eng + mat + sci + soc;
-    per = aggr/6;
+    printf("Please Enter your marks: ");
+    scanf("%d%d%d%d%d", &commerce, &economics, &civics, &sanskrit, &english);
 
-    printf("Your total Aggregate Marks = %d\n", aggr);
-    printf("Your total Percentage = %.0f\n", per);
+    aggr = commerce + economics + civics + sanskrit + english;
+    per = aggr/5;
+
+    if (aggr >= 350) {
+        printf("Your total Aggregate Marks:) %d\n", aggr);
+    } else {
+        printf("Your total Aggregate Marks:( %d\n", aggr);
+    }
+
+    if (per >= 70) {
+        printf("Your total Percentage:) %.0f", per);
+    } else {
+        printf("Your total Percentage:( %.0f", per);
+    }
 
     return 0;
 }
