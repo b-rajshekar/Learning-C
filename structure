@@ -1,0 +1,67 @@
+// write a c program for book details  (id, title, author, price) using structure
+
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_TITLE_LENGTH 50
+#define MAX_AUTHOR_LENGTH 30
+
+struct Book {
+    int id;
+    char title[MAX_TITLE_LENGTH + 1]; // +1 for null terminator
+    char author[MAX_AUTHOR_LENGTH + 1]; // +1 for null terminator
+    float price;
+};
+
+int main() {
+    struct Book book[100]; // Array to store details of up to 100 books
+    int numBooks = 0; // Initialize number of books to 0
+
+    // Input loop to add book details
+    while (1) {
+        printf("\nEnter book details (or leave blank to finish):\n");
+
+        printf("ID: ");
+        if (scanf("%d", &book[numBooks].id) != 1) {
+            break; // Exit loop if input fails
+        }
+
+        printf("Title: ");
+        fgets(book[numBooks].title, MAX_TITLE_LENGTH + 1, stdin);
+        book[numBooks].title[strcspn(book[numBooks].title, "\n")] = '\0'; // Remove newline from title
+
+        printf("Author: ");
+        fgets(book[numBooks].author, MAX_AUTHOR_LENGTH + 1, stdin);
+        book[numBooks].author[strcspn(book[numBooks].author, "\n")] = '\0'; // Remove newline from author
+
+        printf("Price: ");
+        if (scanf("%f", &book[numBooks].price) != 1) {
+            break; // Exit loop if input fails
+        }
+
+        numBooks++; // Increment number of books
+
+        if (numBooks >= 100) {
+            printf("Maximum number of books reached (100).\n");
+            break;
+        }
+
+        printf("\nAdd another book? (y/n): ");
+        char choice;
+        scanf(" %c", &choice); // Remove whitespace before choice
+        if (choice != 'y' && choice != 'Y') {
+            break; // Exit loop if not 'y' or 'Y'
+        }
+    }
+
+    // Display book details
+    printf("\n\nBook Details:\n");
+    for (int i = 0; i < numBooks; i++) {
+        printf("ID: %d\n", book[i].id);
+        printf("Title: %s\n", book[i].title);
+        printf("Author: %s\n", book[i].author);
+        printf("Price: %.2f\n\n", book[i].price);
+    }
+
+    return 0;
+}
